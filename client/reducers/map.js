@@ -15,9 +15,13 @@ export default function map (state = initialState, action) {
       const newMap = map.map(function (arr) {
         return arr.slice()
       })
-      for (let y = 1; y < size - 1; y++) {
-        for (let x = 1; x < size - 1; x++) {
-          const count = map[y - 1][x - 1] + map[y - 1][x] + map[y - 1][x + 1] + map[y][x - 1] + map[y][x + 1] + map[y + 1][x - 1] + map[y + 1][x] + map[y + 1][x + 1]
+      for (let y = 0; y < size; y++) {
+        for (let x = 0; x < size; x++) {
+          const prevY = y === 0 ? size - 1 : y - 1
+          const prevX = x === 0 ? size - 1 : x - 1
+          const nextY = y === size - 1 ? 0 : y + 1
+          const nextX = x === size - 1 ? 0 : x + 1
+          const count = map[prevY][prevX] + map[prevY][x] + map[prevY][nextX] + map[y][prevX] + map[y][nextX] + map[nextY][prevX] + map[nextY][x] + map[nextY][nextX]
           if (count < 2) {
             newMap[y][x] = 0
           } else if (count === 3) {

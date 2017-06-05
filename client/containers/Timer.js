@@ -9,7 +9,8 @@ class Timer extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      frecuency: 250
+      frecuency: 100,
+      count: 0
     }
   }
   componentWillMount=() => {
@@ -24,11 +25,12 @@ class Timer extends Component {
   componentDidMount () {
     this.timer = setInterval(this.tick, this.state.frecuency)
   }
-  shouldComponentUpdate (nextProps) {
-    return this.props.size !== nextProps.size
+  shouldComponentUpdate (nextProps, nextState) {
+    return this.props.size !== nextProps.size || nextState.count !== this.state.count
   }
 
   tick=() => {
+    this.setState({count: this.state.count + 1})
     this.props.actions.updateMap()
   }
 
@@ -39,8 +41,8 @@ class Timer extends Component {
     console.log('Timer rendering...')
     return (
       <div>
-        {frecuency}
-        <button onClick={this.tick} >{'>>>'}</button>
+        Frecuencia:{frecuency}ms<br />
+        Generacion:{this.state.count}
       </div>
     )
   }
