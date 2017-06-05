@@ -15,17 +15,9 @@ class Cell extends Component {
   componentWillReceiveProps (nextProps) {
   }
   shouldComponentUpdate (nextProps, nextState) {
-    // if (this.props.x === 5 && this.props.y === 5) {
-    //   console.log(
-    //     this.props.y,
-    //     this.props.x,
-    //     this.props.map.map[this.props.y][this.props.x],
-    //     nextProps.map.map[this.props.y][this.props.x],
-    //     this.props.map.map[this.props.y][this.props.x] !== nextProps.map.map[this.props.y][this.props.x]
-    //   )
-    // }
-    // return this.props.map.map.length > 0 && this.props.map.map[this.props.y][this.props.x] !== nextProps.map.map[this.props.y][this.props.x]
-    return true
+    const shouldUpdate = this.props.map.map.length > 0 && this.props.map.map[this.props.y][this.props.x] !== nextProps.map.map[this.props.y][this.props.x]
+    if (shouldUpdate) console.log(this.props.y, this.props.x, 'Updating')
+    return shouldUpdate
   }
 
   render () {
@@ -36,13 +28,16 @@ class Cell extends Component {
     if (this.props.map.map.length === 0) {
       return <td></td>
     }
+    const bgColor = this.props.map.map[this.props.y][this.props.x]
+    ? '#F44336' : '#E0E0E0'
+    // if (this.props.y === 15 && this.props.x === 15) {
+    //   bgColor = '#000000'
+    // }
     return (<td style={{
-      width: 15,
-      height: 15,
-      backgroundColor: this.props.map.map[this.props.y][this.props.x]
-      ? '#F44336' : '#E0E0E0'
+      width: 5,
+      height: 5,
+      backgroundColor: bgColor
     }}>
-      { this.props.map.map[this.props.y][this.props.x]}
     </td>)
   }
 }
