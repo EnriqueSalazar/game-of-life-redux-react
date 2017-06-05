@@ -1,0 +1,10 @@
+mutation createAnswerEntry($answerEntry:AnswerEntryInput){
+  createAnswerEntry(answerEntry:$answerEntry){
+    score
+    answersReview{
+      question
+      answer
+      answeredCorrectly
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "presets": [
+    ["env", {
+      "modules": false
+    }],
+    "react",
+    "stage-2",
+    "stage-0"
+  ],
+  "plugins": [
+    "lodash",
+    "react-hot-loader/babel",
+    "transform-runtime",
+    "transform-decorators-legacy"
+  ]
+}

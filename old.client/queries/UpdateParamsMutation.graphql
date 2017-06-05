@@ -1,0 +1,15 @@
+mutation updateParams($newParams:ParamsInput){
+  updateParams(newParams:$newParams){
+    DURATION_SECS {
+      language
+      time
+    }
+    SCOREBOARD_SECS
+    VALID_SUBJECTS
+    MAX_ANSWERS
+    DIFFICULTY_DIST {
+      difficulty
+      quantity
+    }
+  }
+}

@@ -1,0 +1,11 @@
+query quizScoreboard{
+  quizScoreboard{
+    subject
+    ninjas {
+      firstname
+      lastname
+      score
+      elapsed
+    }
+  }
+}

@@ -1,0 +1,12 @@
+query quizSubject($subject: String!){
+  quizSubject(subject:$subject){
+    id
+    text
+    code
+    subject
+    difficulty
+    answers {
+      text
+    }
+  }
+}

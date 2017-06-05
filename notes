@@ -1,0 +1,35 @@
+// mutation {
+//   createAnswerEntry(
+//     answerEntry: {
+//       token: "this is a fake isd",
+//       subject: "Android",
+//       answers: [
+//         {question: "Non ut irure ex commodo ullamco dolore occaecat dolor elit veniam laborum sunt. Lorem et proident cillum ut nostrud eu aliqua consectetur magna ipsum Lorem. Ut nulla in veniam magna aliquip ullamco ut minim laboris eu nostrud. Ad adipisicing sint sunt consequat. In id deserunt magna consectetur esse.", answer: "Voluptate culpa elit Lorem dolore proident ex elit commodo aliquip irure labore."},
+//         {question: "Ad excepteur ut ipsum reprehenderit. Esse laborum est voluptate excepteur Lorem velit consequat. Proident occaecat eu consectetur consectetur est dolor sunt nostrud voluptate. Quis incididunt eu sint aute ut pariatur exercitation cillum reprehenderit.", answer: "Cillum sunt officia amet exercitation dolore nisi veniam."},
+//         {question: "Tempor sunt aliqua tempor tempor quis ullamco deserunt Lorem adipisicing. Nostrud ut labore fugiat id amet sint culpa est anim amet. Quis velit aliquip pariatur cillum velit magna dolor labore velit. Ullamco dolore ipsum sunt sit. Laborum nulla esse incididunt non nostrud do amet enim non eiusmod.", answer: "Veniam reprehenderit consectetur adipisicing aliquip est adipisicing incididunt minim duis cupidatat culpa nulla."}
+//       ]
+//     }
+//   )
+// }
+mutation{updateParams(newParams:{
+  VALID_SUBJECTS:[
+        "Java",
+        "JavaScript"
+  ], SCOREBOARD_SECS:1
+}) {
+  SCOREBOARD_SECS
+  VALID_SUBJECTS
+} }
+
+
+query{quizParams {
+  SCOREBOARD_SECS
+  VALID_SUBJECTS
+  MAX_ANSWERS
+}}
+
+console.dir(newParams, {
+  showHidden: false,
+  depth: null,
+  colors: true
+})
