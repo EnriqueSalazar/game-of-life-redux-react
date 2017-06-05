@@ -4,7 +4,6 @@ import {
 
 const initialState = {
   map: [],
-  canvas: [],
   size: 0
 }
 
@@ -35,34 +34,34 @@ export default function map (state = initialState, action) {
       const initialLifeMap = []
       for (let y = 0; y < action.size; y++) {
         initialLifeMap[y] = []
-        const originY = 25
-        const originX = 25
+        // const originY = 25
+        // const originX = 25
         for (let x = 0; x < action.size; x++) {
-          let isAlive
-          if (y === originY - 1 && x === originX - 3) {
-            isAlive = 1
-          } else if (y === originY - 1 && x === originX - 2) {
-            isAlive = 1
-          } else if (y === originY - 1 && x === originX - 1) {
-            isAlive = 1
-          } else if (y === originY - 1 && x === originX + 1) {
-            isAlive = 1
-          } else if (y === originY - 1 && x === originX + 2) {
-            isAlive = 1
-          } else if (y === originY && x === originX + 1) {
-            isAlive = 1
-          } else if (y === originY && x === originX + 2) {
-            isAlive = 1
-          } else if (y === originY + 1 && x === originX + 2) {
-            isAlive = 1
-          } else {
-            isAlive = 0
-          }
-          initialLifeMap[y][x] = isAlive
+          // let isAlive
+          // if (y === originY - 1 && x === originX - 3) {
+          //   isAlive = 1
+          // } else if (y === originY - 1 && x === originX - 2) {
+          //   isAlive = 1
+          // } else if (y === originY - 1 && x === originX - 1) {
+          //   isAlive = 1
+          // } else if (y === originY - 1 && x === originX + 1) {
+          //   isAlive = 1
+          // } else if (y === originY - 1 && x === originX + 2) {
+          //   isAlive = 1
+          // } else if (y === originY && x === originX + 1) {
+          //   isAlive = 1
+          // } else if (y === originY && x === originX + 2) {
+          //   isAlive = 1
+          // } else if (y === originY + 1 && x === originX + 2) {
+          //   isAlive = 1
+          // } else {
+          //   isAlive = 0
+          // }
+          // initialLifeMap[y][x] = isAlive
+          initialLifeMap[y][x] = Math.round(Math.random())
         }
       }
       return Object.assign({}, state, {
-        canvas: initialLifeMap,
         map: initialLifeMap,
         size: action.size})
     default:

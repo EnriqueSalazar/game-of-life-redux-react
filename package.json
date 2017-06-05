@@ -1,5 +1,5 @@
 {
-  "name": "graphql-react-apollo-jwt",
+  "name": "game-of-life-react-redux",
   "version": "1.0.0",
   "dependencies": {
     "body-parser": "^1.17.1",
@@ -71,6 +71,7 @@
   },
   "scripts": {
     "dev": "webpack-dev-server",
+    "message": "run nodemon in dev, start in production after build",
     "nodemon": "NODE_ENV=development nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "PORT=80 NODE_ENV=production node server.js",

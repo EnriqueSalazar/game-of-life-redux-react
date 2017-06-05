@@ -1,5 +1,0 @@
-mutation createQuizEntry($quizEntry:QuizEntryInput!){
-  createQuizEntry(quizEntry:$quizEntry){
-    token
-  }
-}
