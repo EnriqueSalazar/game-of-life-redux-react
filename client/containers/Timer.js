@@ -17,12 +17,13 @@ class Timer extends Component {
     this.props.actions.initMap(this.props.size)
   }
   componentWillReceiveProps (nextProps) {
-    console.log('receiving props')
     if (this.props.size !== nextProps.size) {
       this.props.actions.initMap(this.props.size)
     }
   }
+  // console.log('receiving props')
   componentDidMount () {
+    console.log('setting timer')
     this.timer = setInterval(this.tick, this.state.frecuency)
   }
   shouldComponentUpdate (nextProps, nextState) {
@@ -38,7 +39,7 @@ class Timer extends Component {
     const {
       frecuency
     } = this.state
-    console.log('Timer rendering...')
+    // console.log('Timer rendering...')
     return (
       <div>
         Frecuencia:{frecuency}ms<br />

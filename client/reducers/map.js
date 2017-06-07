@@ -11,7 +11,7 @@ export default function map (state = initialState, action) {
   switch (action.type) {
     case UPDATE_MAP:
       const {canvas, map, size} = state
-      console.log('tick...')
+      // console.log('tick...')
       const newMap = map.map(function (arr) {
         return arr.slice()
       })

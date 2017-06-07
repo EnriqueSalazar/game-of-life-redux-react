@@ -11,7 +11,10 @@ const Canvas = ({size}) => {
       lifeMap[y][x] = <Cell key={x} y={y} x={x} />
     }
   }
-  return (<table>
+  return (<table style={{
+    borderCollapse: 'collapse'
+
+  }}>
     <tbody>
       {lifeMap.map((row, i) => {
         return (<tr key={i}>
