@@ -9,7 +9,7 @@ class Timer extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      frecuency: 100,
+      frecuency: 50,
       count: 0
     }
   }

@@ -16,30 +16,23 @@ class Cell extends Component {
   componentWillReceiveProps (nextProps) {
     const {map: nextMap} = nextProps.map
     const {map} = this.props.map
+    const {x, y} = nextProps
     if (map.length > 0) {
-      const nextValue = nextMap[this.props.y][this.props.x]
-      // if (map[this.props.y][this.props.x] !== nextValue) {
-      const color = nextValue ? 11 : this.state.color - 1
-      // if (this.props.y === 20 && this.props.x === 20) console.log(this.props.y, this.props.x, nextValue, this.state.color, color)
-      // if (this.props.y === 21 && this.props.x === 20) console.log(this.props.y, this.props.x, nextValue, this.state.color, color)
-      // if (this.props.y === 22 && this.props.x === 20) console.log(this.props.y, this.props.x, nextValue, this.state.color, color)
-      // if (this.props.y === 23 && this.props.x === 20) console.log(this.props.y, this.props.x, nextValue, this.state.color, color)
-      // if (this.props.y === 24 && this.props.x === 20) console.log(this.props.y, this.props.x, nextValue, this.state.color, color)
-      // if (this.props.y === 25 && this.props.x === 20) console.log(this.props.y, this.props.x, nextValue, this.state.color, color)
-      // if (this.props.y === 26 && this.props.x === 20) console.log(this.props.y, this.props.x, nextValue, this.state.color, color)
-      // if (this.props.y === 27 && this.props.x === 20) console.log(this.props.y, this.props.x, nextValue, this.state.color, color)
-      // if (this.props.y === 28 && this.props.x === 20) console.log(this.props.y, this.props.x, nextValue, this.state.color, color)
-      // console.log(this.props.y, this.props.x, nextValue, this.state.color, color)
-      this.setState({color})
-      // }
+      const nextValue = nextMap[y][x]
+      const {color: stateColor} = this.state
+      // console.log(map[y][x], nextValue)
+      if ((nextValue && nextValue !== map[y][x]) || (!nextValue && stateColor > 0)) {
+      // if ((nextMap[y][x] && stateColor < 11) || (!nextMap[y][x] && stateColor > 0)) {
+        const color = nextValue ? 11 : stateColor - 1
+        // console.log(this.props.y, this.props.x, nextValue, this.state.color, color)
+        color >= 0 && this.setState({color})
+      }
     }
   }
 
   shouldComponentUpdate (nextProps, nextState) {
-    //   // const shouldUpdate = this.props.map.map.length > 0 &&
-    //   //   this.props.map.map[this.props.y][this.props.x] !== nextProps.map.map[this.props.y][this.props.x]
-    //   return shouldUpdate
-    return this.state.color > 0
+    // console.log(nextProps.y, nextProps.x, nextState.color !== this.state.color, '==>', nextState.color !== this.state.color)
+    return nextState.color !== this.state.color
   }
 
   render () {
@@ -66,6 +59,7 @@ class Cell extends Component {
     // if (this.props.y === 15 && this.props.x === 15) {
     //   bgColor = '#000000'
     // }
+    // put width and heigth back to 8
     return (<td style={{
       padding: 0,
       border: 0,
