@@ -1,5 +1,5 @@
-const {resolve} = require('path')
-const webpack = require('webpack')
+const { resolve } = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   context: __dirname,
@@ -19,23 +19,24 @@ module.exports = {
   module: {
     rules: [
       {
-        enforce: 'pre',
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'eslint-loader'
-      }, {
+        //   enforce: 'pre',
+        //   test: /\.js$/,
+        //   exclude: /node_modules/,
+        //   loader: 'eslint-loader'
+        // }, {
         test: /\.js$/,
         use: ['babel-loader'],
         exclude: /node_modules/
-      }, {
+      },
+      {
         test: /\.css$/,
-        use: [
-          'style-loader', 'css-loader'
-        ]
-      }, {
+        use: ['style-loader', 'css-loader']
+      },
+      {
         test: /\.svg$/,
         loaders: [
-          'babel-loader', {
+          'babel-loader',
+          {
             loader: 'react-svg-loader',
             query: {
               svgo: {
@@ -49,7 +50,8 @@ module.exports = {
             }
           }
         ]
-      }, {
+      },
+      {
         test: /\.(jpg|png)$/,
         loader: 'file-loader',
         options: {
@@ -68,4 +70,4 @@ module.exports = {
       'process.env.NODE_ENV': '"development"'
     })
   ]
-}
+};

@@ -1,34 +1,27 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Cell from './Cell'
+import React from 'react';
+import PropTypes from 'prop-types';
+import Row from './Row';
 
-const Canvas = ({size}) => {
-  const lifeMap = []
-  console.log('generating canvas')
+const Canvas = ({ size }) => {
+  const lifeMap = [];
+  console.log('generating canvas');
   for (let y = 0; y < size; y++) {
-    lifeMap[y] = []
-    for (let x = 0; x < size; x++) {
-      lifeMap[y][x] = <Cell key={x} y={y} x={x} />
-    }
+    lifeMap[y] = <Row size={size} key={y} y={y} />;
   }
-  return (<table style={{
-    borderCollapse: 'collapse'
-
-  }}>
-    <tbody>
-      {lifeMap.map((row, i) => {
-        return (<tr key={i}>
-          {row.map((cell) => {
-            return cell
-          })}
-        </tr>)
-      })}
-    </tbody>
-  </table>)
-}
+  return (
+    <table
+      style={{
+        borderCollapse: 'collapse'
+      }}
+    >
+      <tbody>
+        {lifeMap}
+      </tbody>
+    </table>
+  );
+};
 Canvas.propTypes = {
   size: PropTypes.number.isRequired
+};
 
-}
-
-export default Canvas
+export default Canvas;

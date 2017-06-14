@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import * as MainActions from '../actions'
-import _ from 'lodash'
 
 class Timer extends Component {
   constructor (props) {

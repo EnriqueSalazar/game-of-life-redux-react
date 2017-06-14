@@ -1,12 +1,11 @@
-import React from 'react'
-import Canvas from './Canvas'
-import Timer from './Timer'
-const size = 100
-const Main = props => (
+import React from 'react';
+import Canvas from './Canvas';
+import Timer from './Timer';
+const size = 100;
+const Main = props =>
   <div>
     <Timer size={size} />
     <Canvas size={size} />
-  </div>
-)
+  </div>;
 
-export default Main
+export default Main;
