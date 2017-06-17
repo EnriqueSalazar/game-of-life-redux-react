@@ -1,48 +1,67 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import {bindActionCreators} from 'redux'
-import {connect} from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 import * as MainActions from '../actions'
 
 class Timer extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
-      frecuency: 10,
-      count: 0
+      count: 0,
+      isRunning: false
     }
   }
-  componentWillMount=() => {
+  componentWillMount = () => {
     this.props.actions.initMap(this.props.size)
   }
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (this.props.size !== nextProps.size) {
       this.props.actions.initMap(this.props.size)
     }
   }
   // console.log('receiving props')
-  componentDidMount () {
+  componentDidMount() {
     console.log('setting timer')
-    this.timer = setInterval(this.tick, this.state.frecuency)
   }
-  shouldComponentUpdate (nextProps, nextState) {
-    return this.props.size !== nextProps.size || nextState.count !== this.state.count
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return (
+  //     this.props.size !== nextProps.size || nextState.count !== this.state.count
+  //   )
+  // }
+  toggleRunning = () => {
+    const { isRunning } = this.state
+    if (isRunning) {
+      clearInterval(this.timer)
+    } else {
+      // this.initMap(this.props.size)
+      this.timer = setInterval(this.tick, this.props.frecuency)
+    }
+    this.setState({isRunning:!isRunning})
   }
 
-  tick=() => {
-    this.setState({count: this.state.count + 1})
+  tick = () => {
+    this.setState({ count: this.state.count + 1 })
     this.props.actions.updateMap()
   }
 
-  render () {
-    const {
-      frecuency
-    } = this.state
+  initMap = () => {
+    this.props.actions.initMap(this.props.size)
+  }
+  randomMap = () => {
+    this.props.actions.randomMap(this.props.size)
+  }
+  render() {
+    const { frecuency } = this.props
+    const { isRunning } = this.state
     // console.log('Timer rendering...')
     return (
       <div>
         Frecuencia:{frecuency}ms<br />
-        Generacion:{this.state.count}
+        Generacion:{this.state.count}<br />
+        <a onClick={this.toggleRunning} href="#">{isRunning ? 'Stop' : 'Start'}</a><br />
+        <a onClick={this.initMap} href="#">Reset</a><br />
+        <a onClick={this.randomMap} href="#">Random</a>
       </div>
     )
   }
@@ -51,7 +70,8 @@ class Timer extends Component {
 Timer.propTypes = {
   actions: PropTypes.object.isRequired,
   map: PropTypes.object.isRequired,
-  size: PropTypes.number.isRequired
+  size: PropTypes.number.isRequired,
+  frecuency: PropTypes.number.isRequired
 }
 
 const mapStateToProps = state => ({

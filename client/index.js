@@ -7,10 +7,10 @@ import App from './App';
 import './index.css';
 injectTapEventPlugin();
 
-  if (process.env.NODE_ENV !== 'production') {
-    const {whyDidYouUpdate} = require('why-did-you-update')
-    whyDidYouUpdate(React)
-  }
+  // if (process.env.NODE_ENV !== 'production') {
+  //   const {whyDidYouUpdate} = require('why-did-you-update')
+  //   whyDidYouUpdate(React)
+  // }
 
 ReactDOM.render(
   <AppContainer>

@@ -1,14 +1,17 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class Cell extends Component {
   shouldComponentUpdate(nextProps) {
-    return this.props.bgColor !== nextProps.bgColor;
+    return this.props.bgColor !== nextProps.bgColor
   }
-
+  onClick = () => {
+    const { y, x } = this.props
+    this.props.toggleSeed(y, x)
+  }
   render() {
     const palette = [
-      '#FFFFFF',
+      '#F1F8E9',
       '#FFEBEE',
       '#FFCDD2',
       '#EF9A9A',
@@ -20,7 +23,7 @@ class Cell extends Component {
       '#C62828',
       '#B71C1C',
       '#000000'
-    ];
+    ]
 
     return (
       <td
@@ -31,13 +34,15 @@ class Cell extends Component {
           height: 8,
           backgroundColor: palette[this.props.bgColor]
         }}
+        onClick={this.onClick}
       />
-    );
+    )
   }
 }
 
 Cell.propTypes = {
-  bgColor: PropTypes.number.isRequired
-};
+  bgColor: PropTypes.number.isRequired,
+  toggleSeed: PropTypes.func.isRequired
+}
 
-export default Cell;
+export default Cell

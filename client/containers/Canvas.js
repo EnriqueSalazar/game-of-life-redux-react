@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Row from './Row';
+import React from 'react'
+import PropTypes from 'prop-types'
+import Row from './Row'
 
 const Canvas = ({ size }) => {
-  const lifeMap = [];
-  console.log('generating canvas');
+  const lifeMap = []
+  console.log('generating canvas')
   for (let y = 0; y < size; y++) {
-    lifeMap[y] = <Row size={size} key={y} y={y} />;
+    lifeMap[y] = <Row size={size} key={y} y={y} />
   }
   return (
     <table
@@ -18,10 +18,10 @@ const Canvas = ({ size }) => {
         {lifeMap}
       </tbody>
     </table>
-  );
-};
+  )
+}
 Canvas.propTypes = {
   size: PropTypes.number.isRequired
-};
+}
 
-export default Canvas;
+export default Canvas

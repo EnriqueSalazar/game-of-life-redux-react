@@ -1,11 +1,18 @@
-import React from 'react';
-import Canvas from './Canvas';
-import Timer from './Timer';
-const size = 100;
-const Main = props =>
-  <div>
-    <Timer size={size} />
-    <Canvas size={size} />
-  </div>;
+import React, { Component } from 'react'
+import Canvas from './Canvas'
+import Timer from './Timer'
+const size = 50
+const frecuency = 100
 
-export default Main;
+class Main extends Component {
+  render() {
+    return (
+      <div>
+        <Timer size={size} frecuency={frecuency} />
+        <Canvas size={size} />
+      </div>
+    )
+  }
+}
+
+export default Main
