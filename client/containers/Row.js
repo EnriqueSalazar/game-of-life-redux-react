@@ -10,11 +10,20 @@ import * as MainActions from '../actions'
 class Row extends Component {
   shouldComponentUpdate(nextProps) {
     const { y } = this.props
-    console.log('shouldComponentUpdate',!_.isEqual(this.props.map.life[y], nextProps.map.life[y]))
+    // console.log('shouldComponentUpdate',!_.isEqual(this.props.map.life[y], nextProps.map.life[y]))
     return !_.isEqual(this.props.map.life[y], nextProps.map.life[y])
   }
   toggleSeed = (y, x) => {
+    if (this.props.map.isEditing) {
+      this.props.actions.toggleSeed(y, x)
+    }
+  }
+  disableEdit = () => {
+    this.props.actions.disableEdit()
+  }
+  enableEdit = (y, x) => {
     this.props.actions.toggleSeed(y, x)
+    this.props.actions.enableEdit()
   }
   render() {
     const { y, size } = this.props
@@ -30,6 +39,8 @@ class Row extends Component {
           y={y}
           bgColor={this.props.map.life[y][x]}
           toggleSeed={this.toggleSeed}
+          disableEdit={this.disableEdit}
+          enableEdit={this.enableEdit}
         />
       )
     }

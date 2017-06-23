@@ -5,10 +5,18 @@ class Cell extends Component {
   shouldComponentUpdate(nextProps) {
     return this.props.bgColor !== nextProps.bgColor
   }
-  onClick = () => {
+  onMouseEnter = () => {
     const { y, x } = this.props
     this.props.toggleSeed(y, x)
   }
+  onMouseDown = () => {
+    const { y, x } = this.props
+    this.props.enableEdit(y, x)
+  }
+  onMouseUp = () => {
+    this.props.disableEdit()
+  }
+
   render() {
     const palette = [
       '#F1F8E9',
@@ -34,7 +42,9 @@ class Cell extends Component {
           height: 8,
           backgroundColor: palette[this.props.bgColor]
         }}
-        onClick={this.onClick}
+        onMouseEnter={this.onMouseEnter}
+        onMouseDown={this.onMouseDown}
+        onMouseUp={this.onMouseUp}
       />
     )
   }
@@ -42,7 +52,9 @@ class Cell extends Component {
 
 Cell.propTypes = {
   bgColor: PropTypes.number.isRequired,
-  toggleSeed: PropTypes.func.isRequired
+  toggleSeed: PropTypes.func.isRequired,
+  disableEdit: PropTypes.func.isRequired,
+  enableEdit: PropTypes.func.isRequired
 }
 
 export default Cell

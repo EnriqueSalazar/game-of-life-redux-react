@@ -57,10 +57,10 @@ class Timer extends Component {
     // console.log('Timer rendering...')
     return (
       <div>
-        Frecuencia:{frecuency}ms<br />
-        Generacion:{this.state.count}<br />
-        <a onClick={this.toggleRunning} href="#">{isRunning ? 'Stop' : 'Start'}</a><br />
-        <a onClick={this.initMap} href="#">Reset</a><br />
+        Frecuencia:{frecuency}ms|
+        Generacion:{this.state.count}|
+        <a onClick={this.toggleRunning} href="#">{isRunning ? 'Stop' : 'Start'}</a>|
+        <a onClick={this.initMap} href="#">Reset</a>|
         <a onClick={this.randomMap} href="#">Random</a>
       </div>
     )

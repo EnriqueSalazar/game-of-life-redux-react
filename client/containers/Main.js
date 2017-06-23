@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import Canvas from './Canvas'
 import Timer from './Timer'
-const size = 50
-const frecuency = 100
+const size = 100
+const frecuency = 17
 
 class Main extends Component {
   render() {

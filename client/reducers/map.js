@@ -2,12 +2,15 @@ import {
   UPDATE_MAP,
   INIT_MAP,
   RANDOM_MAP,
-  TOGGLE_SEED
+  TOGGLE_SEED,
+  DISABLE_EDIT,
+  ENABLE_EDIT
 } from '../constants/ActionTypes'
 
 const initialState = {
   life: [],
-  size: 0
+  size: 0,
+  isEditing: 0
 }
 
 export default function map(state = initialState, action) {
@@ -15,6 +18,7 @@ export default function map(state = initialState, action) {
   const newMap = life.map(function(arr) {
     return arr.slice()
   })
+
   switch (action.type) {
     case UPDATE_MAP:
       for (let y = 0; y < size; y++) {
@@ -42,6 +46,7 @@ export default function map(state = initialState, action) {
         }
       }
       return Object.assign({}, state, { life: newMap })
+
     case RANDOM_MAP:
       const randomLifeMap = []
       for (let y = 0; y < action.size; y++) {
@@ -54,6 +59,7 @@ export default function map(state = initialState, action) {
         life: randomLifeMap,
         size: action.size
       })
+
     case INIT_MAP:
       console.log('Init map')
       const initialLifeMap = []
@@ -67,11 +73,19 @@ export default function map(state = initialState, action) {
         life: initialLifeMap,
         size: action.size
       })
+
     case TOGGLE_SEED:
       const { y, x } = action
       // console.log(y, x, life[y][x], life[y][x] ? 0 : 11)
       newMap[y][x] = life[y][x] ? 0 : 11
       return Object.assign({}, state, { life: newMap })
+
+    case DISABLE_EDIT:
+      return Object.assign({}, state, { isEditing: 0 })
+
+    case ENABLE_EDIT:
+      return Object.assign({}, state, { isEditing: 1 })
+
     default:
       return state
   }
